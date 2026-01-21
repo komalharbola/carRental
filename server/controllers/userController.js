@@ -54,7 +54,7 @@ export const loginUser = async (req, res) => {
 // get user data using token
 export const getUserData = async (req, res) => {
   try {
-    const { user } = req;
+    const { user } = req.user;
     res.json({ success: true, user });
   } catch (error) {
     console.log(error.message);
