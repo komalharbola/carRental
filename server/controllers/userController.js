@@ -4,8 +4,7 @@ import jwt from "jsonwebtoken";
 import Car from "../models/Car.js";
 //generate jwt token
 const generateToken = (userId) => {
-  const payload = userId;
-  return jwt.sign(payload, process.env.JWT_SECRET);
+  return jwt.sign(userId, process.env.JWT_SECRET);
 };
 // register user
 export const registerUser = async (req, res) => {
@@ -36,6 +35,7 @@ export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
+
     if (!user) {
       return res.json({ success: false, message: "User not found" });
     }
@@ -44,31 +44,31 @@ export const loginUser = async (req, res) => {
       return res.json({ success: false, message: "Invalid Credentials" });
     }
     const token = generateToken(user._id.toString());
-    res.json({ success: true, token });
+
+    return res.json({ success: true, token });
   } catch (error) {
     console.log(error.message);
-    res.json({ success: false, message: error.message });
+    return res.json({ success: false, message: error.message });
   }
 };
 
 // get user data using token
 export const getUserData = async (req, res) => {
   try {
-    const { user } = req.user;
-    res.json({ success: true, user });
+    return res.json({ success: true, user: req.user });
   } catch (error) {
-    console.log(error.message);
-    res.json({ success: false, message: error.message });
+    return res.json({ success: false, message: error.message });
   }
 };
+
 // get all cars for the frontend
 export const getCars = async (req, res) => {
   try {
     const cars = await Car.find({ isAvailable: true });
 
-    res.json({ success: true, cars });
+    return res.json({ success: true, cars });
   } catch (error) {
     console.log(error.message);
-    res.json({ success: false, message: error.message });
+    return res.json({ success: false, message: error.message });
   }
 };

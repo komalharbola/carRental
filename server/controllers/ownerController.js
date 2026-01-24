@@ -140,6 +140,7 @@ export const deleteCar = async (req, res) => {
 export const getDashboardData = async (req, res) => {
   try {
     const { _id, role } = req.user;
+
     if (role != "owner") {
       return res.json({ success: false, message: "unauthorized" });
     }

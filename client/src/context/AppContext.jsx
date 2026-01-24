@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+
 export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -55,7 +56,8 @@ export const AppProvider = ({ children }) => {
   // useEffect to fetch user data when available
   useEffect(() => {
     if (token) {
-      axios.defaults.headers.common["Authorization"] = `${token}`;
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
       fetchUser();
       fetchCars();
     }

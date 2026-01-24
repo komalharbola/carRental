@@ -112,7 +112,7 @@ const ManageBookings = () => {
                   )}
                 </td>
               </tr>
-            ))}{" "}
+            ))}
           </tbody>
         </table>
       </div>
