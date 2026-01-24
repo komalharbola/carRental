@@ -53,7 +53,7 @@ export const checkAvailabilityOfCar = async (req, res) => {
       const isAvailable = await checkAvailability(
         car._id,
         pickupDate,
-        returnDate
+        returnDate,
       );
       return { ...car._doc, isAvailable: isAvailable };
     });
@@ -83,7 +83,7 @@ export const getUserBookings = async (req, res) => {
 // api to get owner Booking
 export const getOwnerBookings = async (req, res) => {
   try {
-    if (req.user.role !== "owner") {
+    if (req.user?.role !== "owner") {
       return res.json({ success: false, message: "unauthorized" });
     }
     const { _id } = req.user;
