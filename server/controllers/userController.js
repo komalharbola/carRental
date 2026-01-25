@@ -23,6 +23,12 @@ export const registerUser = async (req, res) => {
 
     const user = await User.create({ name, email, password: hashedPassword });
     const token = generateToken(user._id.toString());
+    user = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    };
     res.json({ success: true, token, user });
   } catch (error) {
     console.log(error.message);
@@ -44,8 +50,13 @@ export const loginUser = async (req, res) => {
       return res.json({ success: false, message: "Invalid Credentials" });
     }
     const token = generateToken(user._id.toString());
-
-    return res.json({ success: true, token });
+    user = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    };
+    return res.json({ success: true, user, token });
   } catch (error) {
     console.log(error.message);
     return res.json({ success: false, message: error.message });
