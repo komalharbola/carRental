@@ -23,7 +23,7 @@ export const registerUser = async (req, res) => {
 
     const user = await User.create({ name, email, password: hashedPassword });
     const token = generateToken(user._id.toString());
-    res.json({ success: true, token });
+    res.json({ success: true, token, user });
   } catch (error) {
     console.log(error.message);
     res.json({ success: false, message: error.message });
