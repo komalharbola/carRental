@@ -16,7 +16,7 @@ import { Toaster } from "react-hot-toast";
 import { useAppContext } from "./context/AppContext";
 
 const App = () => {
-  const { showLogin } = useAppContext();
+  const { showLogin, user } = useAppContext();
   const isOwnerPath = useLocation().pathname.startsWith("/owner");
   return (
     <>
@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/car-details/:id" element={<CarDetails />} />
         <Route path="/cars" element={<Cars />} />
-        <Route path="/my-bookings" element={<MyBookings />} />
+        {user && <Route path="/my-bookings" element={<MyBookings />} />}
         <Route path="/owner" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="add-car" element={<AddCar />} />

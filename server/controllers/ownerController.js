@@ -11,7 +11,7 @@ export const changeRoleToOwner = async (req, res) => {
     res.json({ success: true, message: "Now you can list cars" });
   } catch (error) {
     console.log(error.message);
-    res.json({ success: false, message: error.message });
+    res.json({ success: false, message: "Something Went Wrong !!" });
   }
 };
 
@@ -47,43 +47,9 @@ export const addCar = async (req, res) => {
     res.json({ success: true, message: "car added" });
   } catch (error) {
     console.log(error.message);
-    res.json({ success: false, message: error.message });
+    res.json({ success: false, message: "Something Went Wrong !!" });
   }
 };
-
-// API TO LIST OWNER CAR
-
-// export const addCar = async (req, res) => {
-//   try {
-//     const { _id } = req.user;
-//     const carData = JSON.parse(req.body.carData);
-
-//     if (!req.file) {
-//       return res.json({ success: false, message: "Image required" });
-//     }
-
-//     const fileBuffer = req.file.buffer;
-
-//     const response = await imagekit.files.upload({
-//       file: fileBuffer,
-//       fileName: req.file.originalname,
-//       folder: "/cars",
-//     });
-
-//     const imageUrl = response.url;
-
-//     await Car.create({
-//       ...carData,
-//       owner: _id,
-//       image: imageUrl,
-//     });
-
-//     res.json({ success: true, message: "car added" });
-//   } catch (error) {
-//     console.log("addCar ERROR:", error);
-//     res.json({ success: false, message: error.message });
-//   }
-// };
 
 export const getOwnerCars = async (req, res) => {
   try {
@@ -93,7 +59,7 @@ export const getOwnerCars = async (req, res) => {
     res.json({ success: true, cars });
   } catch (error) {
     console.log(error.message);
-    res.json({ success: false, message: error.message });
+    res.json({ success: false, message: "Something Went Wrong !!" });
   }
 };
 
@@ -113,7 +79,7 @@ export const toggleCarAvailability = async (req, res) => {
     res.json({ success: true, message: "Availability Toggled" });
   } catch (error) {
     console.log(error.message);
-    res.json({ success: false, message: error.message });
+    res.json({ success: false, message: "Something Went Wrong !!" });
   }
 };
 // API to delete a car
@@ -132,7 +98,7 @@ export const deleteCar = async (req, res) => {
     res.json({ success: true, message: "Car Removed" });
   } catch (error) {
     console.log(error.message);
-    res.json({ success: false, message: error.message });
+    res.json({ success: false, message: "Something Went Wrong !!" });
   }
 };
 
@@ -173,7 +139,7 @@ export const getDashboardData = async (req, res) => {
 
     res.json({ success: true, dashboardData });
   } catch (error) {
-    res.json({ success: false, message: error.message });
+    res.json({ success: false, message: "Something Went Wrong !!" });
   }
 };
 
@@ -207,7 +173,7 @@ export const updateUserImage = async (req, res) => {
     res.json({ success: true, message: "image updated" });
   } catch (error) {
     console.log(error.message);
-    res.json({ success: false, message: error.message });
+    res.json({ success: false, message: "Something Went Wrong !!" });
   }
 };
 

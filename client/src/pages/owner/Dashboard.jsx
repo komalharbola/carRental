@@ -94,7 +94,10 @@ export const Dashboard = () => {
                   <p className="text-sm text-gray-500">
                     {booking.car.brand} {booking.car.model}
                   </p>
-                  <p>{booking.createdAt.split("T")[0]}</p>
+                  {/* <p>{booking.createdAt.split("T")[0]}</p> */}
+                  <p>
+                    {new Date(booking.createdAt).toISOString().split("T")[0]}
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-2 font-medium">

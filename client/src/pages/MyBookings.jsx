@@ -90,8 +90,11 @@ const MyBookings = () => {
                 <div>
                   <p className="text-gray-500">Rental Period</p>
                   <p>
-                    {booking.pickupDate.split("T")[0]} To{" "}
-                    {booking.returnDate.split("T")[0]}
+                    {/* {booking.pickupDate.split("T")[0]} To{" "}
+                    {booking.returnDate.split("T")[0]} */}
+                    {new Date(booking.pickupDate).toISOString().split("T")[0]}{" "}
+                    To{" "}
+                    {new Date(booking.returnDate).toISOString().split("T")[0]}
                   </p>
                 </div>
               </div>
@@ -115,7 +118,11 @@ const MyBookings = () => {
                   {currency}
                   {booking.price}
                 </h1>
-                <p>Booked on {booking.createdAt.split("T")[0]}</p>
+                <p>
+                  Booked on{" "}
+                  {new Date(booking.createdAt).toISOString().split("T")[0]}
+                  {/* {booking.createdAt.split("T")[0]} */}
+                </p>
               </div>
             </div>
           </motion.div>

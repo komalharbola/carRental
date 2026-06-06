@@ -27,7 +27,7 @@ export const registerUser = async (req, res) => {
     res.json({ success: true, token });
   } catch (error) {
     console.log(error.message);
-    res.json({ success: false, message: error.message });
+    res.json({ success: false, message: "Can't Register !!" });
   }
 };
 
@@ -49,7 +49,7 @@ export const loginUser = async (req, res) => {
     return res.json({ success: true, token });
   } catch (error) {
     console.log(error.message);
-    return res.json({ success: false, message: error.message });
+    return res.json({ success: false, message: "Something Went Wrong !!" });
   }
 };
 
@@ -58,7 +58,7 @@ export const getUserData = async (req, res) => {
   try {
     return res.json({ success: true, user: req.user });
   } catch (error) {
-    return res.json({ success: false, message: error.message });
+    return res.json({ success: false, message: "Something Went Wrong !!" });
   }
 };
 
@@ -70,6 +70,6 @@ export const getCars = async (req, res) => {
     return res.json({ success: true, cars });
   } catch (error) {
     console.log(error.message);
-    return res.json({ success: false, message: error.message });
+    return res.json({ success: false, message: "Something Went Wrong !!" });
   }
 };
