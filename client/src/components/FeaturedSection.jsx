@@ -8,6 +8,8 @@ import { motion } from "motion/react";
 
 export const FeaturedSection = () => {
   const { cars } = useAppContext();
+  console.log(cars);
+
   const navigate = useNavigate();
   return (
     <motion.div
