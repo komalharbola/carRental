@@ -59,8 +59,9 @@ export const AppProvider = ({ children }) => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       fetchUser();
-      fetchCars();
+      // fetchCars();
     }
+    fetchCars();
   }, [token]);
   const value = {
     navigate,
